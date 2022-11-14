@@ -13,6 +13,8 @@
 		3F778E5E2922524E00DA2463 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F778E5D2922524E00DA2463 /* Preview Assets.xcassets */; };
 		3F778E602922524E00DA2463 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F778E5F2922524E00DA2463 /* Persistence.swift */; };
 		3F778E632922524E00DA2463 /* TaskManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F778E612922524E00DA2463 /* TaskManager.xcdatamodeld */; };
+		3F778E6E2922570D00DA2463 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F778E6D2922570D00DA2463 /* Home.swift */; };
+		3F778E7029225A4C00DA2463 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F778E6F29225A4C00DA2463 /* TaskViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		3F778E5D2922524E00DA2463 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F778E5F2922524E00DA2463 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3F778E622922524E00DA2463 /* TaskManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskManager.xcdatamodel; sourceTree = "<group>"; };
+		3F778E6D2922570D00DA2463 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		3F778E6F29225A4C00DA2463 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +81,34 @@
 		3F778E692922528300DA2463 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				3F778E6C292256FD00DA2463 /* Model */,
+				3F778E6B292256F700DA2463 /* View */,
+				3F778E6A292256E900DA2463 /* ViewModel */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		3F778E6A292256E900DA2463 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F778E6F29225A4C00DA2463 /* TaskViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3F778E6B292256F700DA2463 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F778E6D2922570D00DA2463 /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3F778E6C292256FD00DA2463 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,7 +182,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F778E602922524E00DA2463 /* Persistence.swift in Sources */,
+				3F778E7029225A4C00DA2463 /* TaskViewModel.swift in Sources */,
 				3F778E592922524B00DA2463 /* ContentView.swift in Sources */,
+				3F778E6E2922570D00DA2463 /* Home.swift in Sources */,
 				3F778E632922524E00DA2463 /* TaskManager.xcdatamodeld in Sources */,
 				3F778E572922524B00DA2463 /* TaskManagerApp.swift in Sources */,
 			);
