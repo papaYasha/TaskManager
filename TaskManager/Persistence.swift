@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  TaskManager
-//
-//  Created by student on 14.11.22.
-//
-
 import CoreData
 
 struct PersistenceController {
