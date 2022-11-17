@@ -18,6 +18,7 @@ struct Home: View {
                 .padding(.vertical)
                 
                 customSegmentedBar()
+                
             }
             .padding()
         }
@@ -46,7 +47,7 @@ struct Home: View {
                     .contentShape(Capsule())
                     .onTapGesture {
                         withAnimation {
-                            taskModel.currentTab == tab
+                            taskModel.currentTab = tab
                         }
                     }
             }
