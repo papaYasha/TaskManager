@@ -3,6 +3,7 @@ import SwiftUI
 struct AddNewTask: View {
     
     @EnvironmentObject var taskModel: TaskViewModel
+    @Namespace var animation
     
     //MARK: All Enviroment Values in one Variable
     @Environment(\.self) var env
@@ -107,13 +108,14 @@ struct AddNewTask: View {
                     ForEach(taskTypes, id: \.self) { type in
                         Text(type)
                             .font(.callout)
-                            .padding(.vertical, 8)
+                            .padding()
                             .frame(maxWidth: .infinity)
                             .foregroundColor(taskModel.taskType == type ? .white : .black)
                             .background {
                                 if taskModel.taskType == type {
                                     Capsule()
                                         .fill(.black)
+                                        .matchedGeometryEffect(id: "TYPE", in: animation)
                                 } else {
                                     Capsule()
                                         .strokeBorder(.black)
