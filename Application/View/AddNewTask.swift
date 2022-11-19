@@ -58,7 +58,7 @@ struct AddNewTask: View {
             Divider()
                 .padding(.vertical, 10)
             
-            //Task Deadline
+            // Task Deadline
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Deadline")
                     .font(.caption)
@@ -81,7 +81,7 @@ struct AddNewTask: View {
             
             Divider()
             
-            //Task Title
+            // Task Title
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Title")
                     .font(.caption)
@@ -94,12 +94,13 @@ struct AddNewTask: View {
             .padding(.top, 10)
             
             Divider()
-            
+
+            // Task Type
             VStack(alignment: .leading, spacing: 12) {
                 
                 // MARK: Sample Task Types
                 let taskTypes: [String] = ["Basic", "Urgent", "Important"]
-                
+
                 Text("Task Type")
                     .font(.caption)
                     .foregroundColor(.gray)
@@ -131,6 +132,26 @@ struct AddNewTask: View {
                 }
                 .padding(.top, 8)
             }
+            .padding(.vertical, 10)
+            
+            Divider()
+            
+            Button {
+                
+            } label: {
+                Text("Save Task")
+                    .font(.callout)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .foregroundColor(.white)
+                    .background {
+                        Capsule()
+                            .fill(.black)
+                    }
+            }
+            .frame(maxHeight: .infinity, alignment: .bottom)
+            .padding(.bottom, 10)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
