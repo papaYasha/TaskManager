@@ -5,6 +5,9 @@ struct Home: View {
     @StateObject var taskModel: TaskViewModel = .init()
     @Namespace var animation
     
+    // Fetching Task
+    @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: false)], predicate: nil, animation: .easeInOut) var tasks: FetchedResults<Task>
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -19,6 +22,8 @@ struct Home: View {
                 
                 customSegmentedBar()
                     .padding(.top, 5)
+                
+                taskView()
                 
             }
             .padding()
@@ -61,7 +66,58 @@ struct Home: View {
             AddNewTask()
                 .environmentObject(taskModel)
         }
+    }
+    
+    // MARK: - TaskView
+    @ViewBuilder
+    func taskView() -> some View {
+        LazyVStack(spacing: 20) {
+            ForEach(tasks) { task in
+                taskRowView(task: task)
+            }
+        }
+        .padding(.top, 20)
+    }
+    
+    // MARK: - Task Row View
+    @ViewBuilder
+    func taskRowView(task: Task) -> some View {
+        VStack(alignment: .leading, spacing: 18) {
+            HStack {
+                Text(task.type ?? "")
+                    .font(.callout)
+                    .padding(.vertical, 5)
+                    .padding(.horizontal)
+                    .background {
+                        Capsule()
+                            .fill(.white.opacity(0.3))
+                    }
+                
+                Spacer()
+                
+                // MARK: Edit Button Only For Non Completed Task!
+                if !task.isCompleted {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            .foregroundColor(.black)
+                    }
 
+                }
+            }
+            
+            Text(task.title ?? "")
+                .font(.title2.bold())
+                .foregroundColor(.black)
+                .padding()
+        }
+        .padding()
+        .frame(maxWidth: .infinity)
+        .background {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(.blue)
+        }
     }
     
     // MARK: - Custom Segmented Bar

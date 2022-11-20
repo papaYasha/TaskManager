@@ -123,11 +123,11 @@ struct AddNewTask: View {
                                 }
                             }
                             .contentShape(Capsule())
-//                            .onTapGesture {
-//                                withAnimation {
-//                                    taskModel.taskType == type
-//                                }
-//                            }
+                            .onTapGesture {
+                                withAnimation {
+                                    taskModel.taskType = type
+                                }
+                            }
                     }
                 }
                 .padding(.top, 8)
@@ -160,6 +160,7 @@ struct AddNewTask: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
+        // Date Picker presentation
         .overlay {
             if taskModel.showDatePicker {
                 Rectangle()
