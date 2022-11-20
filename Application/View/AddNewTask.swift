@@ -72,7 +72,7 @@ struct AddNewTask: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .overlay(alignment: .bottomTrailing) {
                 Button {
-                    
+                    taskModel.showDatePicker.toggle()
                 } label: {
                     Image(systemName: "calendar")
                         .foregroundColor(.black)
@@ -123,11 +123,11 @@ struct AddNewTask: View {
                                 }
                             }
                             .contentShape(Capsule())
-                            .onTapGesture {
-                                withAnimation {
-                                    taskModel.taskType == type
-                                }
-                            }
+//                            .onTapGesture {
+//                                withAnimation {
+//                                    taskModel.taskType == type
+//                                }
+//                            }
                     }
                 }
                 .padding(.top, 8)
@@ -137,7 +137,10 @@ struct AddNewTask: View {
             Divider()
             
             Button {
-                
+                // if succsess - closing view
+                if taskModel.addTask(context: env.managedObjectContext) {
+                    env.dismiss()
+                }
             } label: {
                 Text("Save Task")
                     .font(.callout)
@@ -152,9 +155,29 @@ struct AddNewTask: View {
             }
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(.bottom, 10)
+            .disabled(taskModel.taskTitle == "")
+            .opacity(taskModel.taskTitle == "" ? 0.6 : 1)
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
+        .overlay {
+            if taskModel.showDatePicker {
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        taskModel.showDatePicker = false
+                    }
+                // MARK: Disabling Past Dates
+                DatePicker("", selection: $taskModel.taskDeadline, in: Date.now...Date.distantFuture)
+                    .datePickerStyle(.graphical)
+                    .labelsHidden()
+                    .padding(25)
+                    .background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .padding()
+            }
+        }
+        .animation(.easeInOut, value: taskModel.showDatePicker)
     }
 }
 
