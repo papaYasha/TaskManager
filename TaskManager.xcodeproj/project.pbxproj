@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F6A261E292689AD003F4A65 /* AddNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6A261D292689AD003F4A65 /* AddNewTask.swift */; };
+		3F6FECED292D0AA100023F98 /* DynamicFilteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6FECEC292D0AA100023F98 /* DynamicFilteredView.swift */; };
 		3F778E572922524B00DA2463 /* TaskManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F778E562922524B00DA2463 /* TaskManagerApp.swift */; };
 		3F778E592922524B00DA2463 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F778E582922524B00DA2463 /* ContentView.swift */; };
 		3F778E5B2922524E00DA2463 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F778E5A2922524E00DA2463 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		3F6A261D292689AD003F4A65 /* AddNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTask.swift; sourceTree = "<group>"; };
+		3F6FECEC292D0AA100023F98 /* DynamicFilteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFilteredView.swift; sourceTree = "<group>"; };
 		3F778E532922524B00DA2463 /* TaskManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F778E562922524B00DA2463 /* TaskManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerApp.swift; sourceTree = "<group>"; };
 		3F778E582922524B00DA2463 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			children = (
 				3F778E6D2922570D00DA2463 /* Home.swift */,
 				3F6A261D292689AD003F4A65 /* AddNewTask.swift */,
+				3F6FECEC292D0AA100023F98 /* DynamicFilteredView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				3F778E602922524E00DA2463 /* Persistence.swift in Sources */,
 				3F778E7029225A4C00DA2463 /* TaskViewModel.swift in Sources */,
 				3F778E592922524B00DA2463 /* ContentView.swift in Sources */,
+				3F6FECED292D0AA100023F98 /* DynamicFilteredView.swift in Sources */,
 				3F778E6E2922570D00DA2463 /* Home.swift in Sources */,
 				3F6A261E292689AD003F4A65 /* AddNewTask.swift in Sources */,
 				3F778E632922524E00DA2463 /* TaskManager.xcdatamodeld in Sources */,
