@@ -8,6 +8,9 @@ struct Home: View {
     // Fetching Task
     @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: false)], predicate: nil, animation: .easeInOut) var tasks: FetchedResults<Task>
     
+    // Enviroment Values
+    @Environment(\.self) var env
+    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -98,7 +101,9 @@ struct Home: View {
                 // MARK: Edit Button Only For Non Completed Task!
                 if !task.isCompleted {
                     Button {
-                        
+                        taskModel.editTask = task
+                        taskModel.openEditTask = true
+                        taskModel.setupTask()
                     } label: {
                         Image(systemName: "square.and.pencil")
                             .foregroundColor(.black)
@@ -110,13 +115,46 @@ struct Home: View {
             Text(task.title ?? "")
                 .font(.title2.bold())
                 .foregroundColor(.black)
-                .padding()
+                .padding(.vertical, 10)
+            
+            HStack(alignment: .bottom, spacing: 0) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Label {
+                        Text((task.deadline ?? Date()).formatted(date: .long, time: .omitted))
+                    } icon: {
+                        Image(systemName: "calendar")
+                    }
+                    .font(.caption)
+                    
+                    Label {
+                        Text((task.deadline ?? Date()).formatted(date: .omitted, time: .shortened))
+                    } icon: {
+                        Image(systemName: "clock")
+                    }
+                    .font(.caption)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if !task.isCompleted {
+                    Button {
+                    // Updating coreData
+                        task.isCompleted.toggle()
+                        try? env.managedObjectContext.save()
+                    } label: {
+                        Circle()
+                            .strokeBorder(.black, lineWidth: 1.5)
+                            .frame(width: 25, height: 25)
+                            .contentShape(Circle())
+                    }
+
+                }
+            }
         }
         .padding()
         .frame(maxWidth: .infinity)
         .background {
             RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(.blue)
+                .fill(Color(task.color ?? "Yellow"))
         }
     }
     
