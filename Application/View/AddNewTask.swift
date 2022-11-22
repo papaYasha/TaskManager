@@ -22,6 +22,20 @@ struct AddNewTask: View {
                             .foregroundColor(.black)
                     }
                 }
+                .overlay(alignment: .trailing) {
+                    Button {
+                        if let editTask = taskModel.editTask {
+                            env.managedObjectContext.delete(editTask)
+                            try? env.managedObjectContext.save()
+                            env.dismiss()
+                        }
+                    } label: {
+                        Image(systemName: "trash")
+                            .font(.title3)
+                            .foregroundColor(.red)
+                    }
+                    .opacity(taskModel.editTask == nil ? 0 : 1)
+                }
             
             // Task Color
             VStack(alignment: .leading, spacing: 12) {
@@ -94,13 +108,13 @@ struct AddNewTask: View {
             .padding(.top, 10)
             
             Divider()
-
+            
             // Task Type
             VStack(alignment: .leading, spacing: 12) {
                 
                 // MARK: Sample Task Types
                 let taskTypes: [String] = ["Basic", "Urgent", "Important"]
-
+                
                 Text("Task Type")
                     .font(.caption)
                     .foregroundColor(.gray)
