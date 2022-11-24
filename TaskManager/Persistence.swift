@@ -1,10 +1,3 @@
-//
-//  Persistence.swift
-//  TaskManager
-//
-//  Created by student on 14.11.22.
-//
-
 import CoreData
 
 struct PersistenceController {
@@ -13,10 +6,10 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
+//        for _ in 0..<10 {
+//            let newItem = Item(context: viewContext)
+//            newItem.timestamp = Date()
+//        }
         do {
             try viewContext.save()
         } catch {

@@ -1,10 +1,3 @@
-//
-//  TaskManagerApp.swift
-//  TaskManager
-//
-//  Created by student on 14.11.22.
-//
-
 import SwiftUI
 
 @main
