@@ -37,7 +37,7 @@ struct AddNewTask: View {
                     .opacity(taskModel.editTask == nil ? 0 : 1)
                 }
             
-            // Task Color
+            // MARK: Task Color
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Color")
                     .font(.caption)
@@ -72,7 +72,7 @@ struct AddNewTask: View {
             Divider()
                 .padding(.vertical, 10)
             
-            // Task Deadline
+            // MARK: Task Deadline
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Deadline")
                     .font(.caption)
@@ -95,7 +95,7 @@ struct AddNewTask: View {
             
             Divider()
             
-            // Task Title
+            // MARK: Task Title
             VStack(alignment: .leading, spacing: 12) {
                 Text("Task Title")
                     .font(.caption)
@@ -109,7 +109,7 @@ struct AddNewTask: View {
             
             Divider()
             
-            // Task Type
+            // MARK: Task Type
             VStack(alignment: .leading, spacing: 12) {
                 
                 // MARK: Sample Task Types
@@ -174,6 +174,7 @@ struct AddNewTask: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .padding()
+        
         // Date Picker presentation
         .overlay {
             if taskModel.showDatePicker {

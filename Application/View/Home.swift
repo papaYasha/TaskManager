@@ -12,6 +12,8 @@ struct Home: View {
     @Environment(\.self) var env
     
     var body: some View {
+        
+        // Main Screen
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 VStack(alignment: .leading, spacing: 8) {
@@ -32,6 +34,7 @@ struct Home: View {
             .padding()
         }
         
+        // Add Task Button
         .overlay(alignment: .bottom) {
             Button {
                 taskModel.openEditTask.toggle()
@@ -63,6 +66,8 @@ struct Home: View {
                 .ignoresSafeArea()
             }
         }
+        
+        // New Screen Presentation Mode
         .fullScreenCover(isPresented: $taskModel.openEditTask) {
             taskModel.resetTaskData()
         } content: {
@@ -74,6 +79,8 @@ struct Home: View {
     // MARK: - TaskView(Filtered)
     @ViewBuilder
     func taskView() -> some View {
+        
+        // Sorted Tasks
         LazyVStack(spacing: 20) {
                 DynamicFilteredView(currentTab: taskModel.currentTab) { (task: Task) in
                     taskRowView(task: task)
