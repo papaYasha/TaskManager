@@ -44,11 +44,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F6D6FA2292FB83E00ED14F8 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				3F6D6FA4292FB85100ED14F8 /* OnboardingFlow */,
+				3F6D6FA3292FB84200ED14F8 /* WorkFlow */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		3F6D6FA3292FB84200ED14F8 /* WorkFlow */ = {
+			isa = PBXGroup;
+			children = (
+				3F778E6C292256FD00DA2463 /* Model */,
+				3F778E6B292256F700DA2463 /* View */,
+				3F778E6A292256E900DA2463 /* ViewModel */,
+			);
+			path = WorkFlow;
+			sourceTree = "<group>";
+		};
+		3F6D6FA4292FB85100ED14F8 /* OnboardingFlow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OnboardingFlow;
+			sourceTree = "<group>";
+		};
 		3F778E4A2922524B00DA2463 = {
 			isa = PBXGroup;
 			children = (
 				3F778E552922524B00DA2463 /* TaskManager */,
-				3F778E692922528300DA2463 /* Application */,
+				3F778E692922528300DA2463 /* PresentationLayer */,
 				3F778E542922524B00DA2463 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,14 +108,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3F778E692922528300DA2463 /* Application */ = {
+		3F778E692922528300DA2463 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				3F778E6C292256FD00DA2463 /* Model */,
-				3F778E6B292256F700DA2463 /* View */,
-				3F778E6A292256E900DA2463 /* ViewModel */,
+				3F6D6FA2292FB83E00ED14F8 /* Flows */,
 			);
-			path = Application;
+			path = PresentationLayer;
 			sourceTree = "<group>";
 		};
 		3F778E6A292256E900DA2463 /* ViewModel */ = {
