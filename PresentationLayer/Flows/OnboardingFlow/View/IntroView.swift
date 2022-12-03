@@ -17,11 +17,18 @@ struct IntroView: View {
         .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.85), value: showWalkthroughPage)
     }
     
+    // MARK: 
+    @ViewBuilder
+    func walkThroughScreens() -> some View {
+        
+    }
+    
+    // MARK: Nav Bar
     @ViewBuilder
     func navBar() -> some View {
         HStack {
             Button {
-                
+                showWalkthroughPage.toggle()
             } label: {
                 Image(systemName: "chevron.left")
                     .font(.title3)
@@ -34,14 +41,16 @@ struct IntroView: View {
             Button("Skip") {
                 
             }
-            .font(.custom(Constants.sansRegular, size: 14))
+            .font(.custom(Constants.sansRegular, size: 16))
             .foregroundColor(Color("Black"))
         }
         .padding(.horizontal, 15)
         .padding(.top, 10)
-        .frame(maxWidth: .infinity, alignment: .top)
+        .frame(maxHeight: .infinity, alignment: .top)
+        .offset(y: showWalkthroughPage ? 0 : -120)
     }
     
+    // MARK: Intro Screen (fall down animation)
     @ViewBuilder
     func introScreen() -> some View {
         GeometryReader {
@@ -50,7 +59,7 @@ struct IntroView: View {
             VStack(spacing: 10) {
                 Image("man1")
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: size.width, height: size.height / 2)
                     .padding(.top, 80)
                 
