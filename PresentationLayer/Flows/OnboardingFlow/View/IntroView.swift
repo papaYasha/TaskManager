@@ -51,7 +51,7 @@ struct IntroView: View {
                         .opacity(!isLast ? 1 : 0)
                     
                     HStack {
-                        Text("Sign Up")
+                        Text("Sign In")
                             .font(.custom(Constants.sansBold, size: 15))
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -89,13 +89,14 @@ struct IntroView: View {
     func welcomeScreen(size: CGSize, index: Int) -> some View {
         VStack(spacing: 10) {
             
-            Image("man1")
+            Image("woman4")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 250, alignment: .top)
+                .frame(maxWidth: .infinity, maxHeight: 350, alignment: .top)
                 .padding(.horizontal, 20)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
                 .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0.2 : 0).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+                .padding(.bottom)
             
             Text("Welcome")
                 .font(.custom(Constants.sansBold, size: 28))
@@ -136,16 +137,20 @@ struct IntroView: View {
             Image(intro.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 250, alignment: .top)
+                .frame(maxWidth: .infinity, maxHeight: 260, alignment: .top)
                 .padding(.horizontal)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
                 .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+                .padding(.top, 30)
         }
     }
     
     // MARK: Nav Bar
     @ViewBuilder
     func navBar() -> some View {
+        
+        let isLast = currentIndex == intros.count
+        
         HStack {
             Button {
                 if currentIndex > 0 {
@@ -167,6 +172,7 @@ struct IntroView: View {
             }
             .font(.custom(Constants.sansRegular, size: 16))
             .foregroundColor(Color("Black"))
+            .opacity(isLast ? 0 : 1)
         }
         .padding(.horizontal, 15)
         .padding(.top, 10)

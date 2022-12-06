@@ -2,7 +2,7 @@ import Foundation
 
 struct Constants {
 
-    static let isAuthTokenValid: Bool = true
+    static let isAuthTokenValid: Bool = false
     
     //MARK: Fonts
     static let sansBold = "WorkSans-Bold"
