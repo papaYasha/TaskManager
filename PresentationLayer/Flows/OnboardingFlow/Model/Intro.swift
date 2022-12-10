@@ -8,7 +8,7 @@ struct Intro: Identifiable {
 }
 
 var intros: [Intro] = [
-    .init(imageName: "man1", title: "Relax"),
-    .init(imageName: "man1", title: "Care"),
-    .init(imageName: "man1", title: "Mood Dairy")
+    .init(imageName: "man2", title: "Keep Control"),
+    .init(imageName: "woman2", title: "Time Management"),
+    .init(imageName: "woman3", title: "Follow your plans")
 ]
