@@ -4,21 +4,31 @@ struct IntroView: View {
     
     @State var showWalkthroughPage: Bool = false
     @State var currentIndex = 0
+    @State var showHomeView: Bool = false
     
     var body: some View {
         ZStack {
-            Color("BG")
-                .ignoresSafeArea()
-            
-            introScreen()
-            
-            walkThroughScreens()
-            
-            navBar()
-            
-            
+            if showHomeView {
+                Home()
+                    .transition(.move(edge: .trailing))
+            } else {
+                ZStack {
+                    Color("BG")
+                        .ignoresSafeArea()
+                    
+                    introScreen()
+                    
+                    walkThroughScreens()
+                    
+                    navBar()
+                    
+                    
+                }
+                .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.85), value: showWalkthroughPage)
+                .transition(.move(edge: .leading))
+            }
         }
-        .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.85), value: showWalkthroughPage)
+        .animation(.easeInOut(duration: 0.35), value: showHomeView)
     }
     
     // MARK: Walkthrough screens
@@ -74,7 +84,11 @@ struct IntroView: View {
                         .fill(Color("Black"))
                 }
                 .onTapGesture {
-                    currentIndex += 1
+                    if currentIndex == intros.count {
+                        showHomeView = true
+                    } else {
+                        currentIndex += 1
+                    }
                 }
                 .offset(y: isLast ? -60 : -110)
                 .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5), value: isLast)
@@ -132,7 +146,7 @@ struct IntroView: View {
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 30)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(0.1).delay(currentIndex == index ? 0.1 : 0), value: currentIndex)
             
             Image(intro.imageName)
                 .resizable()
@@ -140,7 +154,7 @@ struct IntroView: View {
                 .frame(maxWidth: .infinity, maxHeight: 260, alignment: .top)
                 .padding(.horizontal)
                 .offset(x: -size.width * CGFloat(currentIndex - index))
-                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0 : 0.2).delay(currentIndex == index ? 0.2 : 0), value: currentIndex)
+                .animation(.interactiveSpring(response: 0.9, dampingFraction: 0.8, blendDuration: 0.5).delay(currentIndex == index ? 0.2 : 0).delay(currentIndex == index ? 0.1 : 0), value: currentIndex)
                 .padding(.top, 30)
         }
     }
@@ -168,7 +182,7 @@ struct IntroView: View {
             Spacer()
             
             Button("Skip") {
-                
+                currentIndex = intros.count
             }
             .font(.custom(Constants.sansRegular, size: 16))
             .foregroundColor(Color("Black"))
